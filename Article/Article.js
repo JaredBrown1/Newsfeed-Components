@@ -113,37 +113,56 @@ const data = [
 
 */
 
-const articles = document.querySelector('.articles');
+const header = document.querySelector('.header');
 
-const newsArticle = ((dataTitle, dataDate, firstPar, secPar, thirPar) => {
+//const body = document.querySelector('body');
+
+
+
+
+function newsArticle(articleInfo)  {
   const article = document.createElement('div');
-  const title = document.createElement('h2');
-  const date = document.createElement('p');
-  const parOne = document.createElement('p');
-  const parTwo = document.createElement('p');
-  const parThree = document.createElement('p');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
   const expandButton = document.createElement('span');
 
-  article.appendChild(title);
-  article.appendChild(date);
-  article.appendChild(parOne);
-  article.appendChild(parTwo);
-  article.appendChild(parThree);
+ 
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
   article.appendChild(expandButton);
 
+ 
+  articleTitle.textContent = articleInfo.title;
+  articleDate.textContent = articleInfo.date;
+  firstParagraph.textContent = articleInfo.firstParagraph;
+  secondParagraph.textContent = articleInfo.secondParagraph;
+  thirdParagraph.textContent = articleInfo.thirdParagraph;
+  expandButton.textContent = 'Read More';
+
   article.classList.add('article');
-  date.classList.add('date');
+  articleDate.classList.add('date');
   expandButton.classList.add('expandButton');
 
-  title.textContent = dataTitle;
-  date.textContent = dataDate;
-  parOne.textContent = firstPar;
-  parTwo.textContent = secPar;
-  parThree.textContent = thirPar;
-
+  expandButton.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+    expandButton.textContent = 'close';
+  })
+  
   return article;
+
+}
+const articles = document.querySelector('.articles');
+
+ data.forEach(data => {
+  articles.appendChild(newsArticle(data));
 })
 
-data.map(data => {
-  articles.appendChild(newsArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
-})
+
+
