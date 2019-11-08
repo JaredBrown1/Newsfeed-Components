@@ -86,6 +86,7 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+  
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -115,11 +116,6 @@ const data = [
 
 const header = document.querySelector('.header');
 
-//const body = document.querySelector('body');
-
-
-
-
 function newsArticle(articleInfo)  {
   const article = document.createElement('div');
   const articleTitle = document.createElement('h2');
@@ -129,15 +125,12 @@ function newsArticle(articleInfo)  {
   const thirdParagraph = document.createElement('p');
   const expandButton = document.createElement('span');
 
- 
-
   article.appendChild(articleTitle);
   article.appendChild(articleDate);
   article.appendChild(firstParagraph);
   article.appendChild(secondParagraph);
   article.appendChild(thirdParagraph);
   article.appendChild(expandButton);
-
  
   articleTitle.textContent = articleInfo.title;
   articleDate.textContent = articleInfo.date;
